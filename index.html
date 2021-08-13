@@ -12,6 +12,7 @@
   <p id="version"><b>Version:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
   <p id="accessToken"><b>AccessToken:</b> </p>
+  //Line user profile
   <img id="pictureUrl">
   <p id="userId"><b>userId:</b> </p>
   <p id="displayName"><b>displayName:</b> </p>
@@ -71,7 +72,12 @@
     function getContext() {
     }
 
-    async function getUserProfile() {
+    async function getUserProfile() { // async,await for waiting information from LINE
+		const profile = await lift.getProfile()
+		document.getElementByID("pictureUrl").src = profile.pictureUrl
+		document.getElementByID("userId").append(profile.userId)
+		document.getElementByID("statusMessage").append(profile.statusMessage)
+		document.getElementByID("displayName").append(profile.displayName)
     }
 
     function getEnvironment() {
@@ -93,7 +99,7 @@
       alert("Wellgram LIFF Test")
       await liff.init({ liffId: "1656316385-A1VZpX6n" }) //Start here
       getEnvironment()
-      // getUserProfile()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()

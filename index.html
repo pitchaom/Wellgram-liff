@@ -70,6 +70,11 @@
     }
 
     function getContext() {
+		document.getElementByID("type").append(liff.getContext().type) // Chat 1-1 , group , room , None (external browser)
+		document.getElementByID("viewType").append(liff.getContext().viewType) // Liff view - compact , tall , full
+		document.getElementByID("utouId").append(liff.getContext().utouId) // ID of chat 1-1
+		document.getElementByID("roomId").append(liff.getContext().roomId) // ID of room
+		document.getElementByID("groupId").append(liff.getContext().groupId) // ID of group
     }
 
     async function getUserProfile() { // async,await for waiting information from LINE
@@ -101,7 +106,7 @@
       await liff.init({ liffId: "1656316385-A1VZpX6n" }) //Start here
       getEnvironment()
       getUserProfile()
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }

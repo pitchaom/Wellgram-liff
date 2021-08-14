@@ -73,20 +73,21 @@
     }
 
     async function getUserProfile() { // async,await for waiting information from LINE
-		const profile = await lift.getProfile()
+		const profile = await liff.getProfile()
 		document.getElementByID("pictureUrl").src = profile.pictureUrl
 		document.getElementByID("userId").append(profile.userId)
 		document.getElementByID("statusMessage").append(profile.statusMessage)
 		document.getElementByID("displayName").append(profile.displayName)
+		document.getElementByID("decodedIDToken").append(liff.getDecodeIDToken().email)
     }
 
     function getEnvironment() {
-		document.getElementByID("os").append(lift.getOS())
-		document.getElementByID("language").append(lift.getLanguage())
-		document.getElementByID("version").append(lift.getVersion())
-		document.getElementByID("accessToken").append(lift.getAccessToken()) //For security purpose
-		document.getElementByID("isInClient").append(lift.isInClient()) //open in LINE appliacation (True) or external browser (False)
-		if (lift.inInClient()) {   // To hide button // True = open in LINE appliacation
+		document.getElementByID("os").append(liff.getOS())
+		document.getElementByID("language").append(liff.getLanguage())
+		document.getElementByID("version").append(liff.getVersion())
+		document.getElementByID("accessToken").append(liff.getAccessToken()) //For security purpose
+		document.getElementByID("isInClient").append(liff.isInClient()) //open in LINE appliacation (True) or external browser (False)
+		if (liff.inInClient()) {   // To hide button // True = open in LINE appliacation
 			document.getElementByID("btnLogOut").style.display = "none" 
 		} else { //False = open in external browser
 			document.getElementByID("btnMsg").style.display = "none"

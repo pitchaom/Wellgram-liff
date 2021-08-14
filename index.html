@@ -60,13 +60,17 @@
     async function scanCode() {
     }
 
-    function openWindow() {
-    }
+    function openWindow() { //open browser = in-app browser | external browser
+		liff.openWindow({
+			url: "https://wellgram.co",
+			external : true //open external browser
+		})
+	}
 
     async function getFriendship() {
 		const friend = await liff.getFriendship()
 		document.getElementByID("friendship").append(friend.friendFlag)
-		if (friend.friendFlag) { // if they are not friend with chatbot yet, we will introduce chatbot again
+		if (friend.friendFlag) { // if they are not friend with chatbot/Line OA yet, we will introduce chatbot again
 			if (confirm("คุณยังไม่ได้เพิ่ม Bot เป็นเพื่อน จะเพิ่มเลยไหม?")) {
 				window.location = "https://lin.ee/KSpkzgb"
 			}

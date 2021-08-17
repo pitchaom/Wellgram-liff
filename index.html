@@ -52,9 +52,11 @@
     }
 
     function logOut() {
+		
     }
 
     function closed() {
+		liff.closeWindow()
     }
 
     async function scanCode() {
@@ -130,12 +132,16 @@
     }
 
     async function main() {
-      alert("Wellgram LIFF Test")
+      //alert("Wellgram LIFF Test")
       await liff.init({ liffId: "1656316385-A1VZpX6n" }) //Start here
-      getEnvironment()
-      getUserProfile()
-      getContext()
-      getFriendship()
+	  document.getElementByID("isLoggedIn").append(liff.isLoggedIn())
+	  if(liff.isLoggedIn()) {
+		   getEnvironment()
+		   getUserProfile()
+		   getContext()
+		   getFriendship()
+	  }
+
       // createUniversalLink()
     }
     main()

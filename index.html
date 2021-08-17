@@ -58,6 +58,8 @@
     }
 
     async function scanCode() {
+		const result = await liff.scanCode()
+		document.getElementByID("scanCode").append(result.value)
     }
 
     function openWindow() { //open browser = in-app browser | external browser

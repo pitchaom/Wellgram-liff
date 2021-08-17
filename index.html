@@ -135,12 +135,15 @@
       //alert("Wellgram LIFF Test")
       await liff.init({ liffId: "1656316385-A1VZpX6n" }) //Start here
 	  document.getElementByID("isLoggedIn").append(liff.isLoggedIn())
-	  if(liff.isLoggedIn()) {
-		   getEnvironment()
-		   getUserProfile()
-		   getContext()
-		   getFriendship()
+	  if(liff.isLoggedIn()) { // Logged in Line
+			getEnvironment()
+			getUserProfile()
+			getContext()
+			getFriendship()
+	  } else { //not log in Line (External Browser)
+			liff.login()
 	  }
+	  
 
       // createUniversalLink()
     }
